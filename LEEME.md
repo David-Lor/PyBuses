@@ -4,6 +4,8 @@ PyBuses es un framework creado en Python y diseñado para facilitar el desarroll
 
 Los dos tipos de objetos fundamentales con los que se trabaja son las paradas de autobus (Stop) y los propios autobuses (Bus) que pasan por estas paradas. PyBuses debe "conectarse" con otros scripts, librerías o frameworks externos que obtengan los datos necesarios (información de las paradas y buses) para aportarlos a los objetos que gestiona este framework.
 
+PyBuses utiliza SQLite3 tanto para almacenar su información como para almacenar los logs. Se utilizan los módulos propios [Python-SQLite-DBManager](https://github.com/EnforcerZhukov/Python-SQLite-DBManager) y [Python-Custom-Logging](https://github.com/EnforcerZhukov/Python-Custom-Logging).
+
 ## Principios de funcionamiento
 
 * Todo se gestiona desde el objeto PyBuses.
