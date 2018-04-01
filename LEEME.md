@@ -97,7 +97,7 @@ El objeto PyBuses se inicializará en nuestro proyecto base. En el constructor e
 
 Ejemplo utilizando una librería externa llamada "LST" que contiene dos funciones para obtener información de paradas y otras dos para obtener autobuses:
 
-```python3
+```python
 >>> from LST import get_stop1, get_stop2, get_buses1, get_buses2 #Funciones externas que obtienen paradas y buses
 >>> from PyBuses import PyBuses
 >>> pybuses = PyBuses([get_stop1, get_stop2], [get_buses1, get_buses2], db_name="Databases/LST_Stops.db")
@@ -112,7 +112,7 @@ Para obtener información sobre una parada se utiliza el método PyBuses.find_st
 * Si alguno de los _getters_ declara que la parada no existe, se dejará de buscar en los siguientes, generando la excepción propia StopNotFound. Los _getters_ genéricos nunca declaran que la parada no existe, siendo algo que sólo los _getters_ externos deberían hacer.
 * Si ninguno de los _getters_ obtuvo la parada y todos ellos reportaron fallos (por ejemplo debido a errores en el servidor remoto o conexión propia) se levantará la excepción genérica ConnectionError.
 
-```python3
+```python
 >>> stop = pybuses.find_stop(1234) #Parada que existe
 >>> print(stop.name)
 Pillbox North
@@ -132,7 +132,7 @@ ConnectionError: Could not retrieve Stop #1234 info from any of the getters
 
 El objeto PyBuses tiene el método get_buses(stopid) que buscará los autobuses de la parada indicada (por ID) y devolverá los resultados. Este método no verifica si la parada existe o no existe, por lo que es necesario asegurar de antemano que se opera sobre una parada válida. También es posible llamar al método get_buses() desde un objeto Stop creado.
 
-```python3
+```python
 >>> STOP_ID = 5800
 >>> stop = pybuses.find_stop(STOP_ID)
 >>> buses = pybuses.get_buses(STOP_ID)
