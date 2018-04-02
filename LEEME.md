@@ -21,22 +21,11 @@ Es el objeto base elemental desde el que se trabaja. Contiene todos los métodos
 
 PyBuses también se enlaza con una base de datos donde se guardarán las paradas consultadas, para tener acceso a las mismas sin necesidad de consultar a las fuentes externas si la parada fue consultada con anterioridad.
 
-El objeto PyBuses cuenta internamente con otros objetos (aunque no necesariamente formen parte del mismo paquete):
+El objeto PyBuses cuenta internamente con otros objetos (aunque no formen parte del mismo módulo):
 
 #### Database
 
 Es una base de datos SQLite3 creada a partir del módulo Databases.DBManager (objeto Database). En esta base de datos se guardan las paradas consultadas con anterioridad, así como las imágenes StreetView y Google Maps consultadas previamente (realmente no se guardan las imágenes, sino las ID de archivo enviado a Telegram).
-
-##### Tabla "stops"
-
-Tabla que contiene todas las paradas consultadas con anterioridad.
-
-* stopid (integer primary key): ID/Número único de parada
-* name (text not null): nombre legible de la parada
-* lat (text): ubicación en latitud (float)
-* lon (text): ubicación en longitud (float)
-* registered (text): fecha y hora en la que se guardó por primera vez la parada
-* updated (text): fecha y hora en la que se actualizó por última vez la parada
 
 #### StopsCache
 
