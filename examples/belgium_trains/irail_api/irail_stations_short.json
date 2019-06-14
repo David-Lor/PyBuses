@@ -1,0 +1,46 @@
+{
+    "version":"1.1",
+    "timestamp":"1555775354",
+    "station":[
+        {
+            "locationX":"-0.1260606",
+            "locationY":"51.5310399",
+            "id":"BE.NMBS.007015400",
+            "@id":"http:\/\/irail.be\/stations\/NMBS\/007015400",
+            "standardname":"London Saint Pancras International",
+            "name":"London Saint Pancras International"
+        },
+        {
+            "locationX":"0.32107",
+            "locationY":"51.44304",
+            "id":"BE.NMBS.007015440",
+            "@id":"http:\/\/irail.be\/stations\/NMBS\/007015440",
+            "standardname":"Ebbsfleet International",
+            "name":"Ebbsfleet International"
+        },
+        {
+            "locationX":"6.795297",
+            "locationY":"51.219178",
+            "id":"BE.NMBS.008008094",
+            "@id":"http:\/\/irail.be\/stations\/NMBS\/008008094",
+            "name":"Dusseldorf Hbf",
+            "standardname":"Duesseldorf Hbf"
+        },
+        {
+            "locationX":"7.459293",
+            "locationY":"51.517898",
+            "id":"BE.NMBS.008010053",
+            "@id":"http:\/\/irail.be\/stations\/NMBS\/008010053",
+            "standardname":"Dortmund Hbf",
+            "name":"Dortmund Hbf"
+        },
+        {
+            "locationX":"7.014427185058594",
+            "locationY":"51.45142619727769",
+            "id":"BE.NMBS.008010184",
+            "@id":"http:\/\/irail.be\/stations\/NMBS\/008010184",
+            "standardname":"Essen Hbf",
+            "name":"Essen Hbf"
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+List of all the Station (Stop) IDs existing on the "irail_stations_short.json" file.
+This is a shorten version of the "irail_stations.json" file and the output of the "stations" endpoint of the iRail API.
+These stations are available on the Offline Getter used by the iRail API example.
+Last update: Sat, 20 Apr 2019 17:57:21 (UTC)
+
+ iRail Station ID | PyBuses Stop ID
+------------------|----------------
+BE.NMBS.007015400 | 7015400
+BE.NMBS.007015440 | 7015440
+BE.NMBS.008008094 | 8008094
+BE.NMBS.008010053 | 8010053
+BE.NMBS.008010184 | 8010184
