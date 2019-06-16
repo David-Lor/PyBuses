@@ -1,7 +1,7 @@
 # PyBuses
 
-**_This project is still Work in Progress._**
-_Things may change until the first production version._
+**_The development of this idea of PyBuses is stopped_**
+_Instead, PyBuses will be [PyBuses-Entities](https://github.com/David-Lor/PyBuses/tree/pybuses-entities), with a simpler project focused on only defining data classes and minimal logic._
 
 PyBuses is a Python framework that helps working with public transport - related data when building 
 frontend applications that provide such data to final users.
