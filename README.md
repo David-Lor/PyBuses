@@ -2,7 +2,8 @@
 
 Data classes to be used as part of a project that work with a public transport system, with Stops and Buses.
 
-While focused on Buses, PyBuses-Entities can be used with almost any public transport system that works on a similar manner.
+While focused on Buses, PyBuses-Entities can be used with almost any public transport system that works 
+on a similar manner.
 
 The project relies on two basic classes:
 
@@ -10,26 +11,40 @@ The project relies on two basic classes:
 - **Bus**: a moving vehicle that has a certain route of Stops and stop at them
 
 This project is mainly developed for the [Python-VigoBusAPI](https://github.com/David-Lor/Python_VigoBusAPI) and [VigoBus-TelegramBot](https://github.com/David-Lor/VigoBus-TelegramBot), 
-two projects that work together (being the first an intermediate API, and the second one a Telegram bot backend that consume data from that API). 
-In this public transport system, buses stop at Stops, and for each Stop we can fetch a List of Buses with their remaining time until arrival.
+two projects that work together (being the first an intermediate API, and the second one a Telegram bot backend 
+that consume data from that API). 
+In this public transport system, buses stop at Stops, and for each Stop we can fetch a List of Buses 
+with their remaining time until arrival.
+
+The interesting part about these classes is that they can generate a JSON output, which can be served through our API, 
+and then converted back to a class instance in our client.
 
 ## Requirements
 
 - Python >= 3.6
 - pydantic
 
+## Installation
+
+```bash
+pip install pybuses-entities
+```
+
 ## Changelog
 
-- **0.1.0** - initial release
+- **0.0.1** - initial release
 
 ## Object definition
 
-Stop and Bus objects inherit from pydantic. When creating a new instance of a class, its parameters must be passed as kwargs. 
+Stop and Bus objects inherit from pydantic. When creating a new instance of a class, its parameters 
+must be passed as kwargs. 
 Extra kwargs parameters passed are ignored, so these classes work well with JSON as input and output data.
 
-Both Stop and Bus classes have two superior class levels that inherit from their base classes, providing more advanced attributes.
+Both Stop and Bus classes have two superior class levels that inherit from their base classes, providing 
+more advanced attributes.
 
-Custom classes can be created in a similar manner to suit the needs of each particular project and public transport system.
+Custom classes can be created in a similar manner to suit the needs of each particular project 
+and public transport system, inheriting from these base classes.
 
 ### Stop
 
@@ -57,12 +72,16 @@ Custom classes can be created in a similar manner to suit the needs of each part
 
 Classic object declaration:
 ```python
+from pybusent import Stop
+
 stop_1 = Stop(stopid=1, name="The Red Keep")
 stop_6960 = Stop(stopid=6960, name="Praza do Rei", lat=42.235056274709, lon=-8.72675751435639)
 ```
 
 JSON/kwargs declaration (AdvancedStop example):
 ```python
+from pybusent import AdvancedStop
+
 stop_data = {
     "stopid": 6660,
     "name": "Porta do Sol",
@@ -115,6 +134,9 @@ the AdvancedBus `arrival` & `departure` times are used INSTEAD of `time`
 
 Classic object declaration:
 ```python
+from datetime import datetime
+from pybusent import Bus
+
 # Bus 15C (Mohawk Avenue - Bunker Hill Street) will arrive in 5 minutes
 bus = Bus(line="15C", route="Mohawk Avenue - Bunker Hill Street", time=5)
 
@@ -136,6 +158,8 @@ bus = Bus(line="5B", route="Dukes - Bohan", time=dt)
 
 JSON/kwargs declaration (AdvancedBus example):
 ```python
+from pybusent import AdvancedBus
+
 bus_data = {
     "line": 5,
     "route": "Middle Park - East Holland",
@@ -147,7 +171,9 @@ bus = AdvancedBus(**bus_data)
 
 Static bus declaration with its Stops route (AdvancedBus example):
 ```python
-# Define the route of the buses 5 (Middle Park - East Holland)
+from pybusent import AdvancedBus
+
+# Define the route of the buses Line 5, Route 'Middle Park - East Holland'
 bus = AdvancedBus(
     line="5",
     route="Middle Park - East Holland",
@@ -176,6 +202,8 @@ The following fields can be useful to give context to the Buses result:
 #### Examples
 
 ```python
+from pybusent import BusesResult
+
 result = BusesResult(
     buses=[
         Bus(line="5", route="Middle Park - East Holland", time=3),
@@ -208,6 +236,8 @@ to generate the Stop ID.
 _"My bus network has no Line numbers, only the Route - I will create a custom Bus class without the Line 
 (more like, the Line is not required)"_
 ```python
+from pybusent import Bus
+
 class MyBus(Bus):
     line: Optional[str]
 ```
@@ -215,19 +245,23 @@ class MyBus(Bus):
 _"On my bus network, buses have a flag to know if they have special sits for reduced mobility passengers 
 (False by default)"_
 ```python
+from pybusent import Bus
+
 class MyBus(Bus):
     reduced_mobility: bool = False
 ```
 
 _"On my bus network, the Stop IDs have letters on it, so it must be a string"_
 ```python
+from pybusent import Bus
+
 class MyStop(AdvancedStop):
     stopid: str
 ```
 
 ### Exceptions
 
-A set of exceptions based on Stops and Buses is defined. They have no logic at all.
+A set of exceptions based on Stops and Buses is defined. They include no logic.
 
 - **PyBusesException**: base exception for all the custom exceptions (inherit BaseException)
     - **StopException**: base exception for all the Stop related exceptions
