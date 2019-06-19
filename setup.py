@@ -7,7 +7,7 @@ with open("README.md") as f:
 
 setup(
     name="pybuses-entities",
-    version="0.0.1",
+    version="0.0.2",
     description="Data classes to work with Stops and Buses/vehicles on a public transportation network",
     author="David Lorenzo",
     url="https://github.com/David-Lor/PyBuses",

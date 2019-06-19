@@ -32,6 +32,11 @@ pip install pybuses-entities
 
 ## Changelog
 
+- **0.0.2**:
+    - add options to remove empty lists & empty dicts on get_dict() method of entities (True by default)
+    - add "source" field to AdvancedStop and BusesResult
+    - add new sorting methods for Stops: sort by stopid, sort by distance
+    - add/improve docstrings
 - **0.0.1** - initial release
 
 ## Object definition
@@ -65,6 +70,7 @@ and public transport system, inheriting from these base classes.
   alternative names that users commonly use (optional, list of str)
 - **distance**: distance from this Stop to a certain point. Useful, for example, when giving a list of 
   which Stops exist near a certain location (optional, float)
+- **source**: name of the data source this data was fetched from (optional, str)
 
 <sup>1</sup> timestamps can be: datetime object, str representation, or int/float epoch timestamp
 
@@ -196,8 +202,9 @@ The following fields can be useful to give context to the Buses result:
 
 - **buses**: the List of Buses returned
 - **more_buses_available**: boolean that can be set if the data source reported that more buses were available, 
-  but we only fetched the first N results (e.g. because the data source is split by pages)
-- **stop**: when the data source returns Stop info alongside its realtime Buses list, we can return it
+  but we only fetched the first N results - e.g. because the data source is split into pages (optional, bool)
+- **stop**: when the data source returns Stop info alongside its realtime Buses list, we can return it (optional, Stop)
+- **source**: name of the data source this data was fetched from (optional, str)
 
 #### Examples
 
