@@ -1,5 +1,5 @@
 """SORTING
-Functions to sort lists of objects by one of their attributes
+Functions to sort lists of objects by one of their attributes (they can be provided as 'key' of sorted/sort methods)
 """
 
 __all__ = ("BusSort", "StopSort")

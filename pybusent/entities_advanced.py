@@ -1,3 +1,6 @@
+"""ENTITIES ADVANCED
+Definition of advanced classes based on the base entities
+"""
 
 # # Native # #
 from datetime import datetime, timedelta, tzinfo

@@ -26,6 +26,9 @@ Should be an absolute timestamp in any format prefered: datetime, str representa
 
 
 class BaseEntity(pydantic.BaseModel):
+    """Base Entity for all the PyBuses Entities
+    """
+
     def get_dict(self, remove_none: bool = True, remove_empty_strings: bool = True) -> Dict:
         """Return the dict representation of the current object, with value cleaning.
         :param remove_none: if True, remove items with null/None value (default: True)
@@ -34,7 +37,9 @@ class BaseEntity(pydantic.BaseModel):
         return clear_dict_values(dict(self), remove_none, remove_empty_strings)
 
     @staticmethod
-    def get_sort_key(attribute_name):
+    def get_sort_key(attribute_name: str):
+        """Get a sorting key based on the given attribute name
+        """
         return lambda inst: inst.__getattr__(attribute_name)
 
 
