@@ -109,7 +109,9 @@ class BusesResult(BaseEntity):
                             on the current query
     - stop: optional Stop that can be appended to a Buses Result Query, when the data source returns Stop info
             alongside the Buses list
+    - source: name of the data source this data was fetched from
     """
     buses: Buses = []
     stop: Optional[Stop]
     more_buses_available: Optional[bool]
+    source: Optional[str]

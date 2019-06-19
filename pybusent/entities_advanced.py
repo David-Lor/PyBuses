@@ -21,6 +21,7 @@ class AdvancedStop(Stop):
     - original_name: original Stop name from an external data source
     - tags: list of extra tags for this Stop
     - extra_names: list of extra names for this Stop
+    - source: name of the data source this data was fetched from
     """
     created: Optional[datetime]
     updated: Optional[datetime]
@@ -28,6 +29,7 @@ class AdvancedStop(Stop):
     tags: List[str] = []
     extra_names: List[str] = []
     distance: Optional[float]
+    source: Optional[str]
 
 
 class AdvancedBus(Bus):
