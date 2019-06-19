@@ -31,19 +31,29 @@ def generate_busid(line: str, route: str) -> str:
     return h.hexdigest()
 
 
-def clear_dict_values(d: Dict, remove_none: bool, remove_empty_strings: bool) -> Dict:
+def clear_dict_values(
+        d: Dict,
+        remove_none: bool,
+        remove_empty_strings: bool,
+        remove_empty_lists: bool,
+        remove_empty_dicts: bool
+) -> Dict:
     """Given a Dict, clear the Values that are null (None) or empty strings, depending on the function params.
     A copy of the given dict is returned.
     """
     cloned_dict = copy.deepcopy(d)
     for key, value in d.items():
-        if isinstance(value, dict):
-            cloned_dict[key] = clear_dict_values(value, remove_none, remove_empty_strings)
-        else:
-            conditions = (
-                remove_none and value is None,
-                remove_empty_strings and value == ""
+        conditions = (
+            remove_none and value is None,
+            remove_empty_strings and value == "",
+            remove_empty_lists and isinstance(value, list) and not value,
+            remove_empty_dicts and isinstance(value, dict) and not value
+        )
+        if any(conditions):
+            cloned_dict.pop(key)
+        elif isinstance(value, dict):
+            cloned_dict[key] = clear_dict_values(
+                value, remove_none, remove_empty_strings, remove_empty_lists, remove_empty_dicts
             )
-            if any(conditions):
-                cloned_dict.pop(key)
+
     return cloned_dict

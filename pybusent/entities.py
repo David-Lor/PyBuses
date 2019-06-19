@@ -29,12 +29,20 @@ class BaseEntity(pydantic.BaseModel):
     """Base Entity for all the PyBuses Entities
     """
 
-    def get_dict(self, remove_none: bool = True, remove_empty_strings: bool = True) -> Dict:
+    def get_dict(
+            self,
+            remove_none: bool = True,
+            remove_empty_strings: bool = True,
+            remove_empty_lists: bool = True,
+            remove_empty_dicts: bool = True
+    ) -> Dict:
         """Return the dict representation of the current object, with value cleaning.
         :param remove_none: if True, remove items with null/None value (default: True)
         :param remove_empty_strings: if True, remove empty-string items (default: True)
+        :param remove_empty_lists: if True, remove empty lists (default: True)
+        :param remove_empty_dicts: if True, remove empty dicts (default: True)
         """
-        return clear_dict_values(dict(self), remove_none, remove_empty_strings)
+        return clear_dict_values(dict(self), remove_none, remove_empty_strings, remove_empty_lists, remove_empty_dicts)
 
     @staticmethod
     def get_sort_key(attribute_name: str):
