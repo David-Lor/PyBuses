@@ -2,11 +2,11 @@
 Functions to sort lists of objects by one of their attributes
 """
 
-__all__ = ("BusSort",)
+__all__ = ("BusSort", "StopSort")
 
 
 class BusSort:
-    """Keys to sort lists of buses
+    """Keys to sort lists of Buses
     """
 
     @staticmethod
@@ -62,3 +62,20 @@ class BusSort:
         """Key to sort a list of buses by their Departure Time
         """
         return bus.departure
+
+
+class StopSort:
+    """Keys to sort lists of Stops
+    """
+
+    @staticmethod
+    def stopid(stop):
+        """Key to sort a list of stops by their Stop ID
+        """
+        return stop.stopid
+
+    @staticmethod
+    def distance(stop):
+        """Key to sort a list of stops by their Distance
+        """
+        return stop.distance
